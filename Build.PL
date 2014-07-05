@@ -7,7 +7,9 @@ my $builder = Module::Build->new(
     license             => 'perl',
     dist_author         => 'Curtis "Ovid" Poe <ovid@cpan.org>',
     dist_version_from   => 'lib/aliased.pm',
-    requires => {},
+    requires => {
+        'Import::Into' => '1.002001',
+    },
     build_requires => {
         'Test::More' => 0,
     },

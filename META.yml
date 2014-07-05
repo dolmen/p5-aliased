@@ -17,6 +17,8 @@ provides:
   aliased:
     file: lib/aliased.pm
     version: '0.32'
+requires:
+  Import::Into: '1.002001'
 resources:
   license: http://dev.perl.org/licenses/
 version: '0.32'

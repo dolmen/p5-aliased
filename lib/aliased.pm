@@ -8,6 +8,8 @@ require Exporter;
 
 use strict;
 
+use Import::Into;
+
 sub _croak {
     require Carp;
     Carp::croak(@_);
@@ -50,11 +52,11 @@ sub _load_alias {
     # restoring its value if there is a failure.  Very, very tricky.
     my $sigdie = $SIG{__DIE__};
     {
-        my $code =
-          @import == 0
-          ? "package $callpack; use $package;"
-          : "package $callpack; use $package (\@import)";
-        eval $code;
+	(my $source = $package) =~ s{::|'}{/}g;
+	eval {
+	    require "$source.pm";
+	    $package->import::into($callpack, @import);
+	};
         if ( my $error = $@ ) {
             $SIG{__DIE__} = $sigdie;
             _croak($error);

@@ -5,6 +5,7 @@ WriteMakefile
   'NAME' => 'aliased',
   'VERSION_FROM' => 'lib/aliased.pm',
   'PREREQ_PM' => {
+                   'Import::Into' => '1.002001',
                    'Test::More' => 0
                  },
   'INSTALLDIRS' => 'site',
